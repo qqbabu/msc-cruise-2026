@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026-2027 MSC 榮耀號跨年郵輪之旅｜宮古島・那霸・石垣島 5天4夜繪本手冊</title>
+  <!-- Google Fonts: Huninn (粉圓體) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            washi: '#FFFCF6',
+            ink: '#3E3A39',
+            coral: '#F2A497',
+            yamabuki: '#F6D27A',
+            aqua: '#A8D3E6',
+            wakatake: '#B9DAA5',
+            paper: '#F7F2E7'
+          },
+          fontFamily: {
+            huninn: ['"Huninn"', '"jf-openhuninn"', '"Zen Maru Gothic"', '"PingFang TC"', '"Microsoft JhengHei"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ==========================================
+       日系繪本風核心設計系統（純平塗、無漸層、3px墨灰粗框）
+       ========================================== */
+    :root {
+      --bg-washi: #FFFCF6;
+      --ink: #3E3A39;
+      --coral: #F2A497;
+      --yamabuki: #F6D27A;
+      --aqua: #A8D3E6;
+      --wakatake: #B9DAA5;
+      --paper-dot: #EAE2D3;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Huninn', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      background-color: var(--bg-washi);
+      color: var(--ink);
+    }
+
+    body {
+      background-color: var(--bg-washi);
+      /* 繪本和紙微點底紋（純色圓點、無色階漸層） */
+      background-image: radial-gradient(var(--paper-dot) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      color: var(--ink);
+      overflow-x: hidden;
+      padding-top: 72px;
+    }
+
+    /* 3px 墨灰粗線框與平塗硬陰影 */
+    .ehon-box {
+      background-color: var(--bg-washi);
+      border: 3px solid var(--ink);
+      border-radius: 24px;
+      box-shadow: 4px 4px 0px var(--ink);
+    }
+
+    .ehon-box-sm {
+      background-color: var(--bg-washi);
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 3px 3px 0px var(--ink);
+    }
+
+    .ehon-btn {
+      border: 3px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 3px 3px 0px var(--ink);
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .ehon-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--ink);
+    }
+
+    .ehon-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--ink);
+    }
+
+    .ehon-pill {
+      border: 2.5px solid var(--ink);
+      border-radius: 9999px;
+    }
+
+    /* 票券鋸齒/虛線分隔線 */
+    .ticket-divider {
+      border-top: 3px dashed var(--ink);
+      position: relative;
+    }
+
+    /* 隱藏捲軸但保留滑動功能 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* ==========================================
+       繪本插圖輕微動態 & 切換日期彈跳效果
+       ========================================== */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(0.8deg); }
+    }
+
+    @keyframes bobGentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+
+    @keyframes waveSlide {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(6px); }
+    }
+
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(8deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes wagHand {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-12deg); }
+    }
+
+    /* 日期切換彈跳動畫 */
+    @keyframes bouncyCard {
+      0% {
+        opacity: 0.4;
+        transform: scale(0.94) translateY(12px);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.02) translateY(-4px);
+      }
+      80% {
+        transform: scale(0.99) translateY(2px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .anim-ship {
+      animation: floatSlow 4.2s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .anim-bob {
+      animation: bobGentle 3.2s ease-in-out infinite;
+    }
+
+    .anim-wave {
+      animation: waveSlide 3.6s ease-in-out infinite;
+    }
+
+    .anim-sun {
+      animation: spinSlow 5s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .anim-bounce-in {
+      animation: bouncyCard 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* 自訂打勾框繪本樣式 */
+    .ehon-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 26px;
+      height: 26px;
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      background-color: var(--bg-washi);
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease;
+    }
+
+    .ehon-checkbox:checked {
+      background-color: var(--wakatake);
+      transform: scale(1.06);
+    }
+
+    .ehon-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 8px;
+      height: 14px;
+      border: solid var(--ink);
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    /* ==========================================
+       無障礙：支援「減少動態效果」(prefers-reduced-motion)
+       以及頁面手動切換減少動態模式
+       ========================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body.reduce-motion *,
+    body.reduce-motion ::before,
+    body.reduce-motion ::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-yamabuki selection:text-ink">
+
+  <!-- ==========================================
+       1. 頂端固定選單 (Top Fixed Navigation Bar)
+       ========================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-washi border-b-[3px] border-ink">
+    <div class="max-w-3xl mx-auto px-3 py-2.5 flex items-center justify-between gap-2">
+      <!-- 品牌小標誌 -->
+      <a href="#hero" class="flex items-center gap-2 shrink-0 group" aria-label="回到首頁">
+        <div class="w-9 h-9 rounded-xl bg-coral border-[3px] border-ink flex items-center justify-center shadow-[2px_2px_0px_#3E3A39] group-hover:bg-yamabuki">
+          <!-- 船錨繪本小圖示 -->
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="3" fill="#FFFCF6"/>
+            <line x1="12" y1="22" x2="12" y2="8"/>
+            <path d="M5 12H2a10 10 0 0 0 20 0h-3"/>
+          </svg>
+        </div>
+        <div class="hidden sm:block leading-tight">
+          <span class="text-sm font-bold block">MSC 榮耀號跨年</span>
+          <span class="text-[11px] bg-yamabuki px-1.5 py-0.5 rounded border-[2px] border-ink">12/28 - 01/01</span>
+        </div>
+      </a>
+
+      <!-- 導覽錨點清單（手機可橫向滑動） -->
+      <nav aria-label="主要區塊導覽" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+        <a href="#hero" class="ehon-pill bg-washi hover:bg-yamabuki px-2.5 py-1 text-xs sm:text-sm whitespace-nowrap font-bold">🏠 首頁</a>
+        <a href="#cruise-card" class="ehon-pill bg-washi hover:bg-aqua px-2.5 py-1 text-xs sm:text-sm whitespace-nowrap font-bold">🚢 船班</a>
+        <a href="#itinerary" class="ehon-pill bg-washi hover:bg-coral px-2.5 py-1 text-xs sm:text-sm whitespace-nowrap font-bold">🗓️ 每日行程</a>
+        <a href="#checklist" class="ehon-pill bg-washi hover:bg-wakatake px-2.5 py-1 text-xs sm:text-sm whitespace-nowrap font-bold">☑️ 待辦</a>
+        <a href="#accommodation" class="ehon-pill bg-washi hover:bg-yamabuki px-2.5 py-1 text-xs sm:text-sm whitespace-nowrap font-bold">🛏️ 住宿</a>
+      </nav>
+
+      <!-- 減少動態切換按鈕 & GitHub發布小幫手按鈕 -->
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button id="motionToggleBtn" type="button" onclick="toggleReducedMotion()" class="ehon-pill bg-paper hover:bg-yamabuki px-2.5 py-1 text-xs font-bold flex items-center gap-1" title="切換動態效果（支援無障礙減少動態）">
+          <span id="motionIcon">✨</span>
+          <span id="motionText" class="hidden md:inline">動態開啟</span>
+        </button>
+        <button type="button" onclick="openGithubModal()" class="ehon-pill bg-wakatake hover:bg-yamabuki px-2.5 py-1 text-xs font-bold flex items-center gap-1" title="發佈至 GitHub 網頁教學與下載">
+          <span>🐙</span>
+          <span class="hidden sm:inline">發佈網頁</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主要內容容器（手機優先設計，最大寬度 768px 居中呈現繪本手冊感） -->
+  <main class="max-w-3xl mx-auto px-4 pb-20 space-y-10">
+
+    <!-- ==========================================
+         2. 首頁插圖＋標題＋出發倒數 (Hero Section)
+         ========================================== -->
+    <section id="hero" class="pt-4 scroll-mt-20">
+      <div class="ehon-box p-5 sm:p-7 relative overflow-hidden">
+        <!-- 頂部日期與編號標籤 -->
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="ehon-pill bg-yamabuki px-3.5 py-1 text-xs sm:text-sm font-bold inline-flex items-center gap-1.5">
+            <span>🎉</span> 2026/12/28 (一) – 2027/01/01 (五) ・ 5天4夜
+          </span>
+          <span class="ehon-pill bg-aqua px-3 py-1 text-xs font-bold">
+            AsiaYo 跨年航次 #45840
+          </span>
+        </div>
+
+        <!-- 主標題與副標題 -->
+        <div class="text-center space-y-2 mb-5">
+          <h1 class="text-2xl sm:text-4xl font-bold tracking-wide leading-snug">
+            MSC 地中海榮耀號<br class="sm:hidden" />
+            <span class="inline-block bg-coral px-3 py-0.5 rounded-2xl border-[3px] border-ink shadow-[3px_3px_0px_#3E3A39] mt-1">沖繩跳島跨年繪本之旅</span>
+          </h1>
+          <p class="text-sm sm:text-base font-bold pt-1">
+            基隆港啟航 ➔ 宮古島 ➔ 沖繩那霸 ➔ 石垣島 ➔ 元旦返航
+          </p>
+        </div>
+
+        <!-- 手繪風 SVG 首頁主插圖：MSC 榮耀號、沖繩風獅爺、海浪與海鷗 -->
+        <div class="ehon-box-sm bg-aqua p-3 sm:p-4 mb-6 overflow-hidden">
+          <svg viewBox="0 0 680 310" class="w-full h-auto block" role="img" aria-label="MSC榮耀號郵輪航行在沖繩碧海藍天與風獅爺揮手的繪本插圖">
+            <!-- 溫暖山吹黃太陽 -->
+            <g class="anim-sun" style="transform-origin: 580px 65px;">
+              <circle cx="580" cy="65" r="34" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+              <line x1="580" y1="16" x2="580" y2="6" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="580" y1="114" x2="580" y2="124" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="531" y1="65" x2="521" y2="65" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="629" y1="65" x2="639" y2="65" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="545" y1="30" x2="537" y2="22" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="615" y1="100" x2="623" y2="108" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="615" y1="30" x2="623" y2="22" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <line x1="545" y1="100" x2="537" y2="108" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+              <!-- 太陽笑臉 -->
+              <circle cx="570" cy="62" r="2.8" fill="#3E3A39"/>
+              <circle cx="590" cy="62" r="2.8" fill="#3E3A39"/>
+              <path d="M573 72 Q580 78 587 72" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- 雲朵 1 (左) -->
+            <g class="anim-bob">
+              <path d="M65 80 H155 A18 18 0 0 0 155 46 A24 24 0 0 0 112 34 A22 22 0 0 0 70 48 A16 16 0 0 0 65 80 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            </g>
+
+            <!-- 雲朵 2 (中右) -->
+            <g class="anim-wave">
+              <path d="M375 65 H450 A15 15 0 0 0 450 38 A20 20 0 0 0 412 28 A18 18 0 0 0 380 40 A14 14 0 0 0 375 65 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            </g>
+
+            <!-- 海鷗 -->
+            <path d="M235 52 Q245 40 255 52 Q265 40 275 52" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M295 72 Q302 63 310 72 Q318 63 325 72" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- 遠方沖繩翠綠小島與燈塔 -->
+            <g>
+              <path d="M490 230 Q545 165 615 230 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M565 230 Q605 185 655 230 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <!-- 白色小燈塔 -->
+              <rect x="540" y="160" width="14" height="32" rx="3" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+              <path d="M537 160 H557 L547 147 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+            </g>
+
+            <!-- 慶祝跨年煙火/星星點綴 -->
+            <g class="anim-bob">
+              <path d="M195 95 L200 107 L212 112 L200 117 L195 129 L190 117 L178 112 L190 107 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="485" cy="115" r="6" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="85" cy="128" r="5" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5"/>
+            </g>
+
+            <!-- 主角：MSC Bellissima 榮耀號大型郵輪 -->
+            <g class="anim-ship">
+              <!-- 煙囪 (MSC 標誌性煙囪) -->
+              <path d="M165 110 L180 72 H225 L232 110 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <rect x="174" y="80" width="52" height="12" fill="#3E3A39"/>
+              <!-- 煙囪冒出的可愛雲朵泡泡 -->
+              <circle cx="155" cy="62" r="9" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+              <circle cx="136" cy="54" r="6" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+
+              <!-- 亞利桑那水上樂園珊瑚粉滑水道 -->
+              <path d="M125 135 Q105 102 140 96 Q162 94 150 135" fill="none" stroke="#F2A497" stroke-width="9" stroke-linecap="round"/>
+              <path d="M125 135 Q105 102 140 96 Q162 94 150 135" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+
+              <!-- 頂層甲板艙房 (Deck 15-18) -->
+              <rect x="140" y="110" width="215" height="28" rx="10" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+              <!-- 中層陽台艙房 (Deck 10-14) -->
+              <rect x="115" y="135" width="275" height="32" rx="10" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+              <!-- 船艙窗戶與珊瑚粉/山吹黃裝飾帶 -->
+              <rect x="130" y="146" width="240" height="10" rx="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="165" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="190" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="215" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="240" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="265" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="290" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="315" cy="124" r="5" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+
+              <!-- 船頭可愛沖繩風獅爺 (Shisa) 揮手迎接 -->
+              <g transform="translate(365, 92)">
+                <!-- 獅耳 -->
+                <polygon points="4,18 10,4 18,16" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+                <polygon points="30,16 38,4 44,18" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+                <!-- 獅頭與捲毛 -->
+                <rect x="6" y="14" width="36" height="30" rx="12" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+                <circle cx="6" cy="24" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+                <circle cx="42" cy="24" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+                <!-- 大眼睛與開心開口笑 -->
+                <circle cx="17" cy="25" r="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+                <circle cx="18" cy="25" r="1.8" fill="#3E3A39"/>
+                <circle cx="31" cy="25" r="4" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+                <circle cx="30" cy="25" r="1.8" fill="#3E3A39"/>
+                <rect x="15" y="33" width="18" height="7" rx="3" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.2"/>
+              </g>
+
+              <!-- 船身主體 (Hull) -->
+              <path d="M90 165 H445 L410 232 H112 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <!-- 船底珊瑚粉吃水線 -->
+              <path d="M104 205 H424 L410 232 H112 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+
+              <!-- 船身舷窗與 MSC 榮耀號字樣牌 -->
+              <rect x="150" y="175" width="145" height="22" rx="8" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5"/>
+              <text x="222" y="191" text-anchor="middle" fill="#3E3A39" font-size="13" font-weight="bold" font-family="Huninn, sans-serif">MSC BELLISSIMA</text>
+              <circle cx="325" cy="186" r="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="350" cy="186" r="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+              <circle cx="375" cy="186" r="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+            </g>
+
+            <!-- 前景繪本波浪層 1 -->
+            <g class="anim-wave">
+              <path d="M-20 230 Q25 212 70 230 T160 230 T250 230 T340 230 T430 230 T520 230 T610 230 T700 230 V315 H-20 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+              <path d="M-20 244 Q25 226 70 244 T160 244 T250 244 T340 244 T430 244 T520 244 T610 244 T700 244 V315 H-20 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+            </g>
+
+            <!-- 海面跳躍的小海豚與扶桑花 -->
+            <g transform="translate(465, 248)">
+              <circle cx="20" cy="20" r="14" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+              <circle cx="20" cy="20" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+            </g>
+            <path d="M90 278 Q125 266 160 278" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+            <path d="M280 285 Q320 272 360 285" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+            <path d="M525 280 Q560 268 595 280" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- 出發倒數計時器 (2026/12/28 18:00 啟航) -->
+        <div class="ehon-box-sm bg-paper p-4 sm:p-5 text-center">
+          <div class="flex items-center justify-center gap-2 mb-3">
+            <span class="inline-block w-3 h-3 rounded-full bg-coral border-2 border-ink"></span>
+            <h2 id="countdownTitle" class="text-base sm:text-lg font-bold">距離 2026/12/28 基隆港鳴笛啟航還有</h2>
+            <span class="inline-block w-3 h-3 rounded-full bg-wakatake border-2 border-ink"></span>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2.5 sm:gap-4 max-w-md mx-auto">
+            <div class="ehon-box-sm bg-yamabuki py-2.5 px-2">
+              <div id="cd-days" class="text-2xl sm:text-3xl font-bold leading-none">00</div>
+              <div class="text-xs sm:text-sm font-bold mt-1">天 (Days)</div>
+            </div>
+            <div class="ehon-box-sm bg-coral py-2.5 px-2">
+              <div id="cd-hours" class="text-2xl sm:text-3xl font-bold leading-none">00</div>
+              <div class="text-xs sm:text-sm font-bold mt-1">時 (Hrs)</div>
+            </div>
+            <div class="ehon-box-sm bg-aqua py-2.5 px-2">
+              <div id="cd-mins" class="text-2xl sm:text-3xl font-bold leading-none">00</div>
+              <div class="text-xs sm:text-sm font-bold mt-1">分 (Mins)</div>
+            </div>
+            <div class="ehon-box-sm bg-wakatake py-2.5 px-2">
+              <div id="cd-secs" class="text-2xl sm:text-3xl font-bold leading-none">00</div>
+              <div class="text-xs sm:text-sm font-bold mt-1">秒 (Secs)</div>
+            </div>
+          </div>
+
+          <p id="countdownSub" class="text-xs sm:text-sm mt-3 font-bold">
+            📍 登船地點：基隆港西岸旅客碼頭（建議 13:00–15:30 抵達辦理登船）
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. 船班／交通資訊卡片 (Boarding Pass Style Card)
+         ========================================== -->
+    <section id="cruise-card" class="scroll-mt-20">
+      <div class="flex items-center justify-between mb-3 px-1">
+        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-aqua border-[3px] border-ink inline-flex items-center justify-center shadow-[2px_2px_0px_#3E3A39]">🎫</span>
+          郵輪船班 ＆ 靠岸時刻表
+        </h2>
+        <span class="ehon-pill bg-yamabuki px-3 py-0.5 text-xs font-bold">17.2萬噸旗艦</span>
+      </div>
+
+      <!-- 登船證造型卡片 -->
+      <div class="ehon-box overflow-hidden">
+        <!-- 票頭 -->
+        <div class="bg-aqua border-b-[3px] border-ink px-5 py-3.5 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="ehon-pill bg-washi px-2.5 py-0.5 text-xs font-bold">CRUISE PASS</span>
+            <span class="font-bold text-base sm:text-lg">MSC Bellissima 地中海榮耀號</span>
+          </div>
+          <span class="text-xs sm:text-sm font-bold bg-yamabuki px-3 py-0.5 rounded-full border-[2px] border-ink">
+            跨年特別航次 5日
+          </span>
+        </div>
+
+        <!-- 啟航與返抵大資訊 -->
+        <div class="p-5 sm:p-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center text-center">
+            <!-- 出發 -->
+            <div class="ehon-box-sm bg-paper p-3.5">
+              <span class="ehon-pill bg-coral px-2.5 py-0.5 text-xs font-bold">DEPARTURE 啟航</span>
+              <div class="text-2xl font-bold mt-2">基隆港 KEELUNG</div>
+              <div class="text-sm font-bold mt-1">2026/12/28 (一) 18:00</div>
+              <div class="text-xs mt-1 bg-washi py-1 px-2 rounded-lg border-2 border-ink">13:00 - 16:00 辦理登船</div>
+            </div>
+
+            <!-- 航線圖示 -->
+            <div class="flex flex-col items-center justify-center py-1">
+              <div class="text-xs font-bold bg-wakatake px-3 py-1 ehon-pill mb-2">沖繩三島跳島巡遊</div>
+              <div class="w-full flex items-center justify-center gap-1">
+                <span class="w-3 h-3 rounded-full bg-coral border-2 border-ink"></span>
+                <div class="flex-1 border-t-[3px] border-dashed border-ink"></div>
+                <span class="text-2xl anim-bob">🚢</span>
+                <div class="flex-1 border-t-[3px] border-dashed border-ink"></div>
+                <span class="w-3 h-3 rounded-full bg-wakatake border-2 border-ink"></span>
+              </div>
+              <div class="text-xs font-bold mt-2">宮古島 ➔ 那霸 ➔ 石垣島</div>
+            </div>
+
+            <!-- 返抵 -->
+            <div class="ehon-box-sm bg-paper p-3.5">
+              <span class="ehon-pill bg-wakatake px-2.5 py-0.5 text-xs font-bold">ARRIVAL 返抵</span>
+              <div class="text-2xl font-bold mt-2">基隆港 KEELUNG</div>
+              <div class="text-sm font-bold mt-1">2027/01/01 (五) 07:00</div>
+              <div class="text-xs mt-1 bg-washi py-1 px-2 rounded-lg border-2 border-ink">08:30 起依序辦理離船</div>
+            </div>
+          </div>
+
+          <!-- 虛線分隔 -->
+          <div class="ticket-divider my-5"></div>
+
+          <!-- 5天停靠港明細小表格 -->
+          <div class="space-y-2.5">
+            <h3 class="text-sm sm:text-base font-bold flex items-center gap-1.5 mb-2">
+              <span>⚓</span> 每日停靠港口與預計抵離時間（以船上最終公告為準）
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
+              <div class="ehon-box-sm bg-yamabuki p-3 text-center">
+                <div class="text-xs font-bold">Day 1・12/28(一)</div>
+                <div class="text-base font-bold my-1">🇹🇼 基隆港</div>
+                <div class="text-xs bg-washi rounded-lg py-1 px-1.5 border-2 border-ink font-bold">18:00 啟航</div>
+              </div>
+              <div class="ehon-box-sm bg-aqua p-3 text-center">
+                <div class="text-xs font-bold">Day 2・12/29(二)</div>
+                <div class="text-base font-bold my-1">🏖️ 宮古島</div>
+                <div class="text-xs bg-washi rounded-lg py-1 px-1.5 border-2 border-ink font-bold">08:00 - 18:00</div>
+              </div>
+              <div class="ehon-box-sm bg-coral p-3 text-center">
+                <div class="text-xs font-bold">Day 3・12/30(三)</div>
+                <div class="text-base font-bold my-1">🌺 沖繩那霸</div>
+                <div class="text-xs bg-washi rounded-lg py-1 px-1.5 border-2 border-ink font-bold">07:00 - 19:00</div>
+              </div>
+              <div class="ehon-box-sm bg-wakatake p-3 text-center">
+                <div class="text-xs font-bold">Day 4・12/31(四)</div>
+                <div class="text-base font-bold my-1">🐮 石垣島</div>
+                <div class="text-xs bg-washi rounded-lg py-1 px-1.5 border-2 border-ink font-bold">09:00 - 19:00</div>
+              </div>
+              <div class="ehon-box-sm bg-paper p-3 text-center">
+                <div class="text-xs font-bold">Day 5・01/01(五)</div>
+                <div class="text-base font-bold my-1">🌅 基隆港</div>
+                <div class="text-xs bg-washi rounded-lg py-1 px-1.5 border-2 border-ink font-bold">07:00 抵港</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 個人接駁與登船備忘錄（可自行編輯並自動儲存） -->
+          <div class="mt-5 ehon-box-sm bg-paper p-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                <span>📝</span> 我們的登船梯次／接駁車／包車聯絡備忘（點擊可直接修改儲存）：
+              </span>
+              <span id="transportSaveBadge" class="text-xs bg-wakatake px-2.5 py-0.5 ehon-pill font-bold hidden">✓ 已儲存</span>
+            </div>
+            <textarea
+              id="customTransportNote"
+              rows="2"
+              oninput="saveTransportNote()"
+              class="w-full bg-washi border-[2.5px] border-ink rounded-xl p-2.5 text-xs sm:text-sm font-bold focus:outline-none focus:bg-yamabuki/30"
+              placeholder="例如：12/28 11:30 台北車站搭台鐵至基隆站｜宮古島包車司機：田中先生｜石垣島金城燒肉已預約 12:30"
+            >12/28 11:30 搭乘台鐵/計程車前往基隆港西岸碼頭｜登船請備妥護照正本、護照影本2份、紙本船票與行李條！</textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. 每日行程 (Daily Itinerary: Tabs + SVG + Timeline)
+         ========================================== -->
+    <section id="itinerary" class="scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
+        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-coral border-[3px] border-ink inline-flex items-center justify-center shadow-[2px_2px_0px_#3E3A39]">🗓️</span>
+          每日跳島行程表
+        </h2>
+        <div class="flex items-center gap-1.5 text-xs font-bold">
+          <span class="ehon-pill bg-coral px-2.5 py-0.5">★ 必去重點</span>
+          <span class="ehon-pill bg-aqua px-2.5 py-0.5">彩色交通標籤</span>
+        </div>
+      </div>
+
+      <!-- 上方日期切換按鈕列 (5 Days Tabs) -->
+      <div role="tablist" aria-label="選擇行程日期" class="grid grid-cols-5 gap-2 mb-4">
+        <button type="button" onclick="selectDay(0)" id="day-tab-0" role="tab" aria-selected="true" class="ehon-btn py-2.5 px-1 text-center bg-coral">
+          <div class="text-[11px] sm:text-xs font-bold">Day 1</div>
+          <div class="text-sm sm:text-base font-bold">12/28</div>
+          <div class="text-[11px] sm:text-xs font-bold truncate">基隆啟航</div>
+        </button>
+        <button type="button" onclick="selectDay(1)" id="day-tab-1" role="tab" aria-selected="false" class="ehon-btn py-2.5 px-1 text-center bg-washi">
+          <div class="text-[11px] sm:text-xs font-bold">Day 2</div>
+          <div class="text-sm sm:text-base font-bold">12/29</div>
+          <div class="text-[11px] sm:text-xs font-bold truncate">宮古島</div>
+        </button>
+        <button type="button" onclick="selectDay(2)" id="day-tab-2" role="tab" aria-selected="false" class="ehon-btn py-2.5 px-1 text-center bg-washi">
+          <div class="text-[11px] sm:text-xs font-bold">Day 3</div>
+          <div class="text-sm sm:text-base font-bold">12/30</div>
+          <div class="text-[11px] sm:text-xs font-bold truncate">沖繩那霸</div>
+        </button>
+        <button type="button" onclick="selectDay(3)" id="day-tab-3" role="tab" aria-selected="false" class="ehon-btn py-2.5 px-1 text-center bg-washi">
+          <div class="text-[11px] sm:text-xs font-bold">Day 4</div>
+          <div class="text-sm sm:text-base font-bold">12/31</div>
+          <div class="text-[11px] sm:text-xs font-bold truncate">石垣跨年</div>
+        </button>
+        <button type="button" onclick="selectDay(4)" id="day-tab-4" role="tab" aria-selected="false" class="ehon-btn py-2.5 px-1 text-center bg-washi">
+          <div class="text-[11px] sm:text-xs font-bold">Day 5</div>
+          <div class="text-sm sm:text-base font-bold">01/01</div>
+          <div class="text-[11px] sm:text-xs font-bold truncate">元旦返航</div>
+        </button>
+      </div>
+
+      <!-- 每日行程主卡片（切換日期時觸發彈跳效果） -->
+      <div id="itineraryCardContainer" class="ehon-box p-4 sm:p-6 anim-bounce-in">
+        <!-- 目的地繪本插圖與當日主題標頭 -->
+        <div id="dayHeaderBanner" class="ehon-box-sm p-4 mb-6 bg-yamabuki">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div class="md:col-span-7 space-y-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <span id="dayBadge" class="ehon-pill bg-washi px-3 py-0.5 text-xs sm:text-sm font-bold">Day 1 ・ 2026/12/28 (週一)</span>
+                <span id="dayWeatherTag" class="ehon-pill bg-aqua px-2.5 py-0.5 text-xs font-bold">⚓ 18:00 啟航</span>
+              </div>
+              <h3 id="dayTitle" class="text-xl sm:text-2xl font-bold leading-snug">
+                基隆港登船・探索榮耀大道與啟航派對
+              </h3>
+              <p id="daySummary" class="text-xs sm:text-sm font-bold leading-relaxed">
+                帶著愉快心情抵達基隆港，登上 17.2 萬噸海上宮殿！漫步 96 公尺 LED 天幕「榮耀大道」，在甲板吹海風欣賞港都夕陽。
+              </p>
+            </div>
+            <!-- 當日專屬手繪 SVG 插圖容器 -->
+            <div id="daySvgContainer" class="md:col-span-5 ehon-box-sm bg-washi p-2 flex items-center justify-center">
+              <!-- 由 JS 注入當日專屬手繪 SVG -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 下方垂直時間軸 (Timeline) -->
+        <div class="relative pl-6 sm:pl-8 border-l-[3px] border-ink ml-3 sm:ml-4 space-y-5" id="timelineList">
+          <!-- 由 JS 動態渲染時間軸項目 -->
+        </div>
+
+        <!-- 底部前後日快速切換鈕 -->
+        <div class="mt-6 pt-4 border-t-[3px] border-dashed border-ink flex items-center justify-between gap-3">
+          <button type="button" id="prevDayBtn" onclick="changeDayRelative(-1)" class="ehon-btn bg-paper hover:bg-yamabuki px-4 py-2 text-xs sm:text-sm font-bold flex items-center gap-1">
+            <span>⬅️</span> 前一天行程
+          </button>
+          <span id="dayPageIndicator" class="text-xs sm:text-sm font-bold">第 1 / 5 天</span>
+          <button type="button" id="nextDayBtn" onclick="changeDayRelative(1)" class="ehon-btn bg-yamabuki hover:bg-coral px-4 py-2 text-xs sm:text-sm font-bold flex items-center gap-1">
+            後一天行程 <span>➡️</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. 可打勾的待辦清單 (Interactive Checklist)
+         ========================================== -->
+    <section id="checklist" class="scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
+        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-wakatake border-[3px] border-ink inline-flex items-center justify-center shadow-[2px_2px_0px_#3E3A39]">☑️</span>
+          行前準備 ＆ 郵輪必備清單
+        </h2>
+        <button type="button" onclick="resetChecklist()" class="ehon-pill bg-paper hover:bg-coral px-3 py-1 text-xs font-bold">
+          🔄 重設預設清單
+        </button>
+      </div>
+
+      <div class="ehon-box p-4 sm:p-6 space-y-5">
+        <!-- 進度條區塊 -->
+        <div class="ehon-box-sm bg-paper p-3.5">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold mb-2">
+            <span>🎒 行李打包完成度</span>
+            <span id="checklistProgressText" class="ehon-pill bg-yamabuki px-2.5 py-0.5">已完成 0 / 0 項 (0%)</span>
+          </div>
+          <div class="w-full h-5 bg-washi border-[3px] border-ink rounded-full overflow-hidden">
+            <div id="checklistProgressBar" class="h-full bg-wakatake border-r-[3px] border-ink transition-all duration-300" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- 分類篩選按鈕 -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" onclick="filterChecklist('all')" id="filter-all" class="ehon-pill bg-yamabuki px-3 py-1 text-xs sm:text-sm font-bold">全部項目</button>
+          <button type="button" onclick="filterChecklist('證件財務')" id="filter-證件財務" class="ehon-pill bg-washi px-3 py-1 text-xs sm:text-sm font-bold">🪪 證件與財務</button>
+          <button type="button" onclick="filterChecklist('郵輪生活')" id="filter-郵輪生活" class="ehon-pill bg-washi px-3 py-1 text-xs sm:text-sm font-bold">🚢 郵輪必備物品</button>
+          <button type="button" onclick="filterChecklist('岸上觀光')" id="filter-岸上觀光" class="ehon-pill bg-washi px-3 py-1 text-xs sm:text-sm font-bold">🏖️ 岸上觀光準備</button>
+        </div>
+
+        <!-- 待辦項目列表 -->
+        <div id="checklistContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- 由 JS 渲染 -->
+        </div>
+
+        <!-- 新增自訂待辦事項 -->
+        <form onsubmit="addChecklistItem(event)" class="ehon-box-sm bg-paper p-3.5 flex flex-col sm:flex-row gap-2.5">
+          <select id="newTodoCategory" aria-label="選擇待辦分類" class="bg-washi border-[3px] border-ink rounded-xl px-3 py-2 text-xs sm:text-sm font-bold focus:outline-none">
+            <option value="證件財務">🪪 證件與財務</option>
+            <option value="郵輪生活">🚢 郵輪必備物品</option>
+            <option value="岸上觀光">🏖️ 岸上觀光準備</option>
+          </select>
+          <input
+            type="text"
+            id="newTodoInput"
+            placeholder="新增您的專屬待辦或伴手禮清單（例：買邊銀食堂石垣島辣油）..."
+            class="flex-1 bg-washi border-[3px] border-ink rounded-xl px-3.5 py-2 text-xs sm:text-sm font-bold focus:outline-none focus:bg-yamabuki/20"
+          />
+          <button type="submit" class="ehon-btn bg-wakatake hover:bg-yamabuki px-4 py-2 text-xs sm:text-sm font-bold shrink-0">
+            ＋ 新增項目
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. 住宿資訊 (Accommodation Info: MSC Bellissima)
+         ========================================== -->
+    <section id="accommodation" class="scroll-mt-20">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
+        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-yamabuki border-[3px] border-ink inline-flex items-center justify-center shadow-[2px_2px_0px_#3E3A39]">🛏️</span>
+          海上住宿 ＆ 郵輪設施指南
+        </h2>
+        <span class="ehon-pill bg-coral px-3 py-0.5 text-xs font-bold">4晚移動星級飯店</span>
+      </div>
+
+      <div class="ehon-box p-4 sm:p-6 space-y-6">
+        <!-- 郵輪基本介紹與手繪船艙插圖 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center ehon-box-sm bg-paper p-4">
+          <div class="md:col-span-8 space-y-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="ehon-pill bg-yamabuki px-3 py-0.5 text-xs font-bold">MSC Cruises</span>
+              <span class="ehon-pill bg-washi px-3 py-0.5 text-xs font-bold">17.2 萬噸・載客量 5,686 人</span>
+            </div>
+            <h3 class="text-lg sm:text-2xl font-bold">MSC 地中海榮耀號 (MSC Bellissima)</h3>
+            <p class="text-xs sm:text-sm font-bold leading-relaxed">
+              入住期間：2026/12/28 (一) – 2027/01/01 (五) 共 4 晚。<br/>
+              艙房內配備雙人床（可拆為兩張單人床）、專屬衛浴、電視、保險箱、吹風機及 110V 美規與 220V 歐規插座，並有 24 小時客艙服務員細心照料。
+            </p>
+          </div>
+          <!-- 陽台艙房海景手繪 SVG -->
+          <div class="md:col-span-4 ehon-box-sm bg-washi p-2.5 flex items-center justify-center">
+            <svg viewBox="0 0 220 145" class="w-full h-auto" role="img" aria-label="郵輪海景陽台艙房繪本插圖">
+              <!-- 落地窗海景 -->
+              <rect x="20" y="15" width="95" height="95" rx="10" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+              <circle cx="88" cy="40" r="12" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+              <path d="M22 82 Q45 74 68 82 T113 82 V108 H22 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+              <line x1="67" y1="15" x2="67" y2="110" stroke="#3E3A39" stroke-width="3"/>
+              <!-- 窗簾 -->
+              <path d="M18 15 H38 Q34 62 20 95 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+              <!-- 舒適大床與枕頭 -->
+              <rect x="95" y="75" width="105" height="45" rx="8" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+              <rect x="95" y="88" width="105" height="32" rx="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+              <rect x="155" y="62" width="36" height="16" rx="6" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+              <rect x="115" y="65" width="34" height="14" rx="6" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+              <!-- 地板線 -->
+              <line x1="10" y1="125" x2="210" y2="125" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 我們的艙房與用餐梯次小卡（可自行記錄並儲存至 localStorage） -->
+        <div class="ehon-box-sm bg-washi p-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <h4 class="text-sm sm:text-base font-bold flex items-center gap-1.5">
+              <span>🔑</span> 我們的艙房資訊卡（可直接修改，自動記憶於手機中）
+            </h4>
+            <span id="cabinSaveBadge" class="text-xs bg-wakatake px-2.5 py-0.5 ehon-pill font-bold hidden">✓ 已儲存</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div>
+              <label for="cabinType" class="block text-xs font-bold mb-1">艙房類型</label>
+              <input id="cabinType" type="text" oninput="saveCabinInfo()" value="陽台艙 (Balcony)" class="w-full bg-paper border-[2.5px] border-ink rounded-xl px-2.5 py-1.5 text-xs sm:text-sm font-bold focus:outline-none focus:bg-yamabuki/30"/>
+            </div>
+            <div>
+              <label for="cabinNumber" class="block text-xs font-bold mb-1">甲板樓層 / 房號</label>
+              <input id="cabinNumber" type="text" oninput="saveCabinInfo()" value="Deck 11 - 待填房號" class="w-full bg-paper border-[2.5px] border-ink rounded-xl px-2.5 py-1.5 text-xs sm:text-sm font-bold focus:outline-none focus:bg-yamabuki/30"/>
+            </div>
+            <div>
+              <label for="dinnerTime" class="block text-xs font-bold mb-1">主餐廳晚宴梯次</label>
+              <input id="dinnerTime" type="text" oninput="saveCabinInfo()" value="第一梯次 17:30" class="w-full bg-paper border-[2.5px] border-ink rounded-xl px-2.5 py-1.5 text-xs sm:text-sm font-bold focus:outline-none focus:bg-yamabuki/30"/>
+            </div>
+            <div>
+              <label for="musterStation" class="block text-xs font-bold mb-1">救生演習集合站</label>
+              <input id="musterStation" type="text" oninput="saveCabinInfo()" value="依船卡標示 (A~F區)" class="w-full bg-paper border-[2.5px] border-ink rounded-xl px-2.5 py-1.5 text-xs sm:text-sm font-bold focus:outline-none focus:bg-yamabuki/30"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- 榮耀號 4 大必玩亮點（繪本四色卡片） -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="ehon-box-sm bg-coral p-4">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-base sm:text-lg font-bold">✨ 96公尺榮耀大道 ＆ 水晶旋梯</span>
+              <span class="ehon-pill bg-washi px-2 py-0.5 text-xs font-bold">Deck 6-7</span>
+            </div>
+            <p class="text-xs sm:text-sm font-bold leading-relaxed">
+              80 公尺亞洲最大海上 LED 天幕每日定時上演奇幻天幕秀！中庭鑲嵌 61,440 顆施華洛世奇水晶旋梯，是穿上晚禮服必拍的打卡聖地。
+            </p>
+          </div>
+
+          <div class="ehon-box-sm bg-yamabuki p-4">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-base sm:text-lg font-bold">🍽️ 免費主餐廳 ＆ 20小時自助百匯</span>
+              <span class="ehon-pill bg-washi px-2 py-0.5 text-xs font-bold">Deck 5/6/15</span>
+            </div>
+            <p class="text-xs sm:text-sm font-bold leading-relaxed">
+              包含櫻桃餐廳、燈塔餐廳、海王餐廳（每日更換歐式精緻菜單），以及 15 樓市集自助餐廳（Marketplace Buffet）從早到宵夜免費享用！
+            </p>
+          </div>
+
+          <div class="ehon-box-sm bg-aqua p-4">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-base sm:text-lg font-bold">💦 亞利桑那水上樂園 ＆ 室內外泳池</span>
+              <span class="ehon-pill bg-washi px-2 py-0.5 text-xs font-bold">Deck 15-19</span>
+            </div>
+            <p class="text-xs sm:text-sm font-bold leading-relaxed">
+              擁有 3 條刺激海上滑水道、跨越甲板的喜馬拉雅高空繩索橋，以及冬季也能溫暖戲水的大峽谷室內恆溫泳池與按摩熱水池。
+            </p>
+          </div>
+
+          <div class="ehon-box-sm bg-wakatake p-4">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-base sm:text-lg font-bold">🎭 倫敦大劇院 ＆ 跨年倒數派對</span>
+              <span class="ehon-pill bg-washi px-2 py-0.5 text-xs font-bold">Deck 6/15</span>
+            </div>
+            <p class="text-xs sm:text-sm font-bold leading-relaxed">
+              登船後連上船內免費 Wi-Fi 即可使用《MSC for Me》App 免費預約每晚倫敦大劇院大秀；12/31 晚間更有全船跨年倒數狂歡派對！
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. 頁尾與一鍵下載 / GitHub Pages 發布按鈕
+         ========================================== -->
+    <footer class="pt-4">
+      <div class="ehon-box bg-paper p-5 text-center space-y-4">
+        <div class="inline-flex items-center gap-2 ehon-pill bg-yamabuki px-4 py-1 text-xs sm:text-sm font-bold">
+          <span>🚢</span> 祝您擁有美好的 2026–2027 沖繩跨年郵輪回憶！
+        </div>
+        <p class="text-xs sm:text-sm font-bold max-w-xl mx-auto">
+          本旅遊手冊支援離線瀏覽與自動記憶您的待辦清單、艙房與交通備註。您可以直接下載此單一 HTML 檔案並免費發佈到您的 GitHub Pages！
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button type="button" onclick="downloadSingleHtml()" class="ehon-btn bg-coral hover:bg-yamabuki px-5 py-2.5 text-xs sm:text-sm font-bold inline-flex items-center gap-2">
+            <span>💾</span> 下載單一 HTML 檔 (index.html)
+          </button>
+          <button type="button" onclick="openGithubModal()" class="ehon-btn bg-wakatake hover:bg-aqua px-5 py-2.5 text-xs sm:text-sm font-bold inline-flex items-center gap-2">
+            <span>🐙</span> 查看 GitHub 網頁發佈步驟
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ==========================================
+       GitHub Pages 發佈教學小幫手 Modal
+       ========================================== -->
+  <div id="githubModal" class="fixed inset-0 z-50 bg-ink/60 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="githubModalTitle">
+    <div class="ehon-box bg-washi max-w-xl w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-4">
+      <div class="flex items-center justify-between border-b-[3px] border-ink pb-3">
+        <h3 id="githubModalTitle" class="text-lg sm:text-xl font-bold flex items-center gap-2">
+          <span>🐙</span> 免費發佈到您的 GitHub Pages 網頁指南
+        </h3>
+        <button type="button" onclick="closeGithubModal()" class="ehon-btn bg-coral px-3 py-1 text-xs font-bold">✕ 關閉</button>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm font-bold leading-relaxed">
+        <div class="ehon-box-sm bg-yamabuki p-3.5">
+          <div class="text-sm sm:text-base mb-1">方法 A：完全免寫指令！直接用 GitHub 網頁上傳（最推薦 ⭐️）</div>
+          <ol class="list-decimal list-inside space-y-1.5">
+            <li>點擊下方按鈕<strong>「💾 下載 index.html 檔案」</strong>存到電腦或手機。</li>
+            <li>登入 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer" class="underline decoration-2">GitHub 建立新專案 (New repository)</a>，名稱可取為 <code>msc-cruise-2026</code>，勾選 <strong>Public</strong> 並按 <strong>Create repository</strong>。</li>
+            <li>進入專案頁面後，點擊 <strong>uploading an existing file</strong>，把剛剛下載的 <code>index.html</code> 拖曳上傳，並按底部綠色按鈕 <strong>Commit changes</strong>。</li>
+            <li>點擊上方選單 <strong>Settings</strong> ➔ 左側選單 <strong>Pages</strong>。</li>
+            <li>在 <strong>Build and deployment (Branch)</strong> 將 <code>None</code> 改為 <code>main</code> 並按 <strong>Save</strong>。</li>
+            <li>等待約 1 分鐘重新整理，就會出現您的專屬旅遊網址：<code>https://您的帳號.github.io/msc-cruise-2026/</code> 囉！🎉</li>
+          </ol>
+        </div>
+
+        <div class="ehon-box-sm bg-paper p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <span>方法 B：使用 Git 終端機指令快速推播</span>
+            <button type="button" onclick="copyGitCommands()" class="ehon-pill bg-aqua hover:bg-wakatake px-3 py-0.5 text-xs font-bold" id="copyGitBtn">📋 複製指令</button>
+          </div>
+          <pre id="gitCommandsText" class="bg-washi border-[2.5px] border-ink rounded-xl p-3 text-xs overflow-x-auto font-mono">mkdir msc-cruise-2026 && cd msc-cruise-2026
+# 將下載的 index.html 放入此資料夾後執行：
+git init
+git branch -M main
+git add index.html
+git commit -m "Add MSC Bellissima 2026-2027 New Year Cruise website"
+git remote add origin https://github.com/您的GitHub帳號/msc-cruise-2026.git
+git push -u origin main</pre>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-end gap-2 pt-2">
+        <button type="button" onclick="downloadSingleHtml()" class="ehon-btn bg-wakatake hover:bg-yamabuki px-4 py-2 text-xs sm:text-sm font-bold">
+          💾 下載 index.html 檔案
+        </button>
+        <button type="button" onclick="closeGithubModal()" class="ehon-btn bg-paper px-4 py-2 text-xs sm:text-sm font-bold">
+          我知道了
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       JavaScript：行程資料、手繪SVG圖庫、倒數計時與互動邏輯
+       ========================================== -->
+  <script>
+    // ------------------------------------------
+    // 1. 每日專屬手繪繪本風 SVG 圖庫 (3px 墨灰線條 + 四色平塗)
+    // ------------------------------------------
+    const dayIllustrations = [
+      // Day 1: 基隆港啟航・郵輪與音符行李箱
+      `<svg viewBox="0 0 260 150" class="w-full h-auto" role="img" aria-label="基隆港郵輪啟航與行李箱插圖">
+        <rect x="8" y="8" width="244" height="134" rx="12" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+        <!-- 夕陽 -->
+        <circle cx="205" cy="46" r="22" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+        <!-- 基隆港起重機與地標 -->
+        <path d="M25 105 V60 L50 45 V105" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="18" y="95" width="55" height="14" rx="4" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+        <!-- 郵輪船頭 -->
+        <g class="anim-ship">
+          <path d="M90 72 H215 L198 112 H90 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="102" y="54" width="82" height="20" rx="6" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+          <rect x="115" y="38" width="26" height="18" rx="4" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+          <circle cx="122" cy="88" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="142" cy="88" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="162" cy="88" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+        <!-- 可愛行李箱 -->
+        <rect x="42" y="72" width="32" height="38" rx="6" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+        <path d="M51 72 V62 H65 V72" fill="none" stroke="#3E3A39" stroke-width="3"/>
+        <circle cx="58" cy="90" r="6" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+        <!-- 海浪 -->
+        <path d="M8 112 Q40 102 72 112 T136 112 T200 112 T252 112 V142 H8 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+      </svg>`,
+
+      // Day 2: 宮古島・伊良部大橋、海龜與雪鹽霜淇淋
+      `<svg viewBox="0 0 260 150" class="w-full h-auto" role="img" aria-label="宮古島伊良部大橋與海龜雪鹽霜淇淋插圖">
+        <rect x="8" y="8" width="244" height="134" rx="12" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+        <!-- 宮古藍大海 -->
+        <path d="M8 92 Q50 84 92 92 T176 92 T252 92 V142 H8 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+        <!-- 伊良部大橋拱形 -->
+        <path d="M12 92 Q95 45 185 92" fill="none" stroke="#3E3A39" stroke-width="4" stroke-linecap="round"/>
+        <path d="M12 98 Q95 51 185 98" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+        <line x1="60" y1="76" x2="60" y2="95" stroke="#3E3A39" stroke-width="3"/>
+        <line x1="95" y1="69" x2="95" y2="92" stroke="#3E3A39" stroke-width="3"/>
+        <line x1="130" y1="76" x2="130" y2="95" stroke="#3E3A39" stroke-width="3"/>
+        <!-- 可愛綠蠵龜 -->
+        <g class="anim-bob" transform="translate(55, 102)">
+          <ellipse cx="28" cy="16" rx="20" ry="13" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+          <circle cx="52" cy="14" r="8" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+          <circle cx="54" cy="12" r="2" fill="#3E3A39"/>
+          <path d="M18 6 L28 16 L38 6" fill="none" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+        <!-- 宮古島雪鹽霜淇淋 -->
+        <g class="anim-ship" transform="translate(188, 32)">
+          <polygon points="12,48 28,88 44,48" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="28" cy="42" r="16" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+          <path d="M16 32 Q28 14 40 32 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+      </svg>`,
+
+      // Day 3: 沖繩那霸・首里城守禮門、波上宮與扶桑花
+      `<svg viewBox="0 0 260 150" class="w-full h-auto" role="img" aria-label="沖繩那霸守禮門與扶桑花插圖">
+        <rect x="8" y="8" width="244" height="134" rx="12" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/>
+        <!-- 綠地 -->
+        <path d="M8 110 Q130 96 252 110 V142 H8 Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+        <!-- 首里城守禮門 -->
+        <g class="anim-bob">
+          <line x1="75" y1="55" x2="75" y2="118" stroke="#F2A497" stroke-width="8"/>
+          <line x1="75" y1="55" x2="75" y2="118" stroke="#3E3A39" stroke-width="3"/>
+          <line x1="155" y1="55" x2="155" y2="118" stroke="#F2A497" stroke-width="8"/>
+          <line x1="155" y1="55" x2="155" y2="118" stroke="#3E3A39" stroke-width="3"/>
+          <!-- 雙層屋簷 -->
+          <path d="M45 58 Q115 44 185 58 L175 46 H55 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M60 38 Q115 26 170 38 L158 26 H72 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <!-- 守禮之邦匾額 -->
+          <rect x="92" y="38" width="46" height="14" rx="3" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+        <!-- 沖繩扶桑花 -->
+        <g class="anim-sun" style="transform-origin: 215px 65px;">
+          <circle cx="215" cy="52" r="11" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="227" cy="62" r="11" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="222" cy="76" r="11" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="207" cy="76" r="11" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="203" cy="62" r="11" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+          <circle cx="215" cy="65" r="6" fill="#FFFCF6" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+      </svg>`,
+
+      // Day 4: 石垣島川平灣玻璃船、石垣牛＆跨年煙火
+      `<svg viewBox="0 0 260 150" class="w-full h-auto" role="img" aria-label="石垣島川平灣玻璃船與跨年煙火插圖">
+        <rect x="8" y="8" width="244" height="134" rx="12" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5"/>
+        <!-- 川平灣碧海 -->
+        <path d="M8 95 Q70 85 130 95 T252 95 V142 H8 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+        <!-- 跨年倒數煙火與 2027 歡慶 -->
+        <g class="anim-sun" style="transform-origin: 62px 45px;">
+          <circle cx="62" cy="45" r="18" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-dasharray="6 4"/>
+          <circle cx="62" cy="45" r="8" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+        <rect x="150" y="20" width="88" height="28" rx="10" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+        <text x="194" y="39" text-anchor="middle" fill="#3E3A39" font-size="14" font-weight="bold" font-family="Huninn, sans-serif">2026➔2027</text>
+        <!-- 川平灣玻璃底船 -->
+        <g class="anim-ship">
+          <path d="M75 88 H185 L170 112 H90 Z" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M88 64 H172 L165 88 H95 Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="112" y="94" width="36" height="10" rx="4" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.5"/>
+        </g>
+      </svg>`,
+
+      // Day 5: 元旦曙光・返抵基隆港與滿滿戰利品
+      `<svg viewBox="0 0 260 150" class="w-full h-auto" role="img" aria-label="2027元旦海上日出與快樂返家插圖">
+        <rect x="8" y="8" width="244" height="134" rx="12" fill="#F2A497" stroke="#3E3A39" stroke-width="2.5"/>
+        <!-- 2027 元旦大日出 -->
+        <g class="anim-bob">
+          <circle cx="130" cy="95" r="44" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+          <circle cx="118" cy="76" r="3" fill="#3E3A39"/>
+          <circle cx="142" cy="76" r="3" fill="#3E3A39"/>
+          <path d="M122 85 Q130 92 138 85" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <!-- 海平面 -->
+        <path d="M8 95 Q65 86 130 95 T252 95 V142 H8 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/>
+        <rect x="75" y="106" width="110" height="24" rx="8" fill="#FFFCF6" stroke="#3E3A39" stroke-width="3"/>
+        <text x="130" y="123" text-anchor="middle" fill="#3E3A39" font-size="13" font-weight="bold" font-family="Huninn, sans-serif">HAPPY 2027 🌅</text>
+      </svg>`
+    ];
+
+    // ------------------------------------------
+    // 2. 5天4夜完整行程資料庫 (AsiaYo #45840 12/28-01/01)
+    // ------------------------------------------
+    const itineraryData = [
+      {
+        dayLabel: "Day 1 ・ 2026/12/28 (週一)",
+        weatherTag: "⚓ 18:00 基隆啟航",
+        bannerBg: "bg-yamabuki",
+        tabColor: "bg-coral",
+        title: "基隆港登船・探索榮耀大道與啟航派對",
+        summary: "帶著愉快心情抵達基隆港，登上 17.2 萬噸海上宮殿！漫步 96 公尺 LED 天幕「榮耀大道」，在甲板吹海風欣賞港都夕陽。",
+        events: [
+          {
+            time: "12:30",
+            title: "抵達基隆港西岸旅客碼頭・托運行李",
+            desc: "將釘好 MSC 專屬行李條的大件行李交由碼頭工作人員托運直達艙房門口，隨身攜帶護照正本、船票與貴重物品。",
+            transport: "🚕 台鐵 / 計程車",
+            transportColor: "bg-yamabuki",
+            mustGo: false
+          },
+          {
+            time: "13:30",
+            title: "辦理登船手續・領取專屬船卡 (Cruise Card)",
+            desc: "通過安檢與海關查驗，踏上 MSC 地中海榮耀號！進房領取船卡（兼具房卡、船上消費卡與上下船識別證）。",
+            transport: "🚶 碼頭步行",
+            transportColor: "bg-wakatake",
+            mustGo: false
+          },
+          {
+            time: "15:00",
+            title: "15樓市集自助餐廳下午茶 ＆ 96米榮耀大道巡禮",
+            desc: "先到 15 樓享用現烤披薩與午茶甜點，接著前往 6 樓漫步 80 公尺 LED 天幕「榮耀大道」，並連上船內 Wi-Fi 預約倫敦大劇院表演！",
+            transport: "🚶 船內探索",
+            transportColor: "bg-aqua",
+            mustGo: true
+          },
+          {
+            time: "16:30",
+            title: "全船旅客救生演習 (Muster Drill)",
+            desc: "依船卡上標示的集合站（Muster Station）完成安全演習，這是每位郵輪旅客的必要程序喔！",
+            transport: "📢 全船廣播",
+            transportColor: "bg-yamabuki",
+            mustGo: false
+          },
+          {
+            time: "18:00",
+            title: "基隆港鳴笛啟航！15樓甲板啟航派對",
+            desc: "郵輪緩緩駛出基隆港，跟隨娛樂團隊在泳池甲板隨音樂搖擺，飽覽基隆港夕陽與璀璨燈火。",
+            transport: "🚢 郵輪啟航",
+            transportColor: "bg-aqua",
+            mustGo: true
+          },
+          {
+            time: "19:30",
+            title: "主餐廳歐式歡迎晚宴 ＆ 倫敦大劇院歌舞大秀",
+            desc: "依船卡指定餐廳與梯次享用精緻三道式歐陸晚宴，餐後前往倫敦大劇院欣賞百老匯級聲光大秀。",
+            transport: "🎭 船上娛樂",
+            transportColor: "bg-wakatake",
+            mustGo: true
+          }
+        ]
+      },
+      {
+        dayLabel: "Day 2 ・ 2026/12/29 (週二)",
+        weatherTag: "🏖️ 08:00-18:00 停靠宮古島",
+        bannerBg: "bg-aqua",
+        tabColor: "bg-aqua",
+        title: "宮古島跳島・邂逅奇蹟「宮古藍」海景",
+        summary: "早晨緩緩駛入宮古島平良港！踏上被譽為東洋第一白沙灘的「與那霸前濱」，馳騁伊良部大橋，品嚐濃郁雪鹽霜淇淋。",
+        events: [
+          {
+            time: "08:00",
+            title: "抵達宮古島平良港・辦理岸上觀光下船",
+            desc: "請務必攜帶「船卡」與「護照影本 1 份」及日本入境卡依序下船，開啟夢幻宮古藍一日遊。",
+            transport: "🚢 郵輪靠岸",
+            transportColor: "bg-aqua",
+            mustGo: false
+          },
+          {
+            time: "09:30",
+            title: "與那霸前濱海灘 (Yonaha Maehama Beach)",
+            desc: "綿延 7 公里的純白細緻沙灘與漸層透明的「宮古藍」海水交織，被譽為東洋第一美海灘，隨手拍都像明信片！",
+            transport: "🚕 包車 / 計程車",
+            transportColor: "bg-yamabuki",
+            mustGo: true
+          },
+          {
+            time: "11:00",
+            title: "伊良部大橋海上兜風 ＆ 牧山展望台",
+            desc: "穿越全長 3,540 公尺的日本最長免費跨海大橋，彷彿開車飛馳在果凍海面上，登展望台俯瞰壯闊海景。",
+            transport: "🚕 跨海兜風",
+            transportColor: "bg-yamabuki",
+            mustGo: true
+          },
+          {
+            time: "12:30",
+            title: "宮古牛燒肉／古謝宮古蕎麥麵 ＆ 雪鹽霜淇淋",
+            desc: "午餐品嚐入口即化的宮古牛或道地沖繩宮古そば；甜點必吃「雪鹽製鹽所」鹹甜交織的雪鹽霜淇淋灑上繽紛調味鹽！",
+            transport: "🍦 美食巡禮",
+            transportColor: "bg-wakatake",
+            mustGo: true
+          },
+          {
+            time: "15:00",
+            title: "砂山海灘海蝕拱門 ＆ 唐吉訶德宮古島店採買",
+            desc: "造訪天然海蝕洞秘境沙灘，回程順道逛藥妝與宮古島限定黑糖、雪鹽金楚糕伴手禮。",
+            transport: "🚌 岸上包車",
+            transportColor: "bg-yamabuki",
+            mustGo: false
+          },
+          {
+            time: "17:00",
+            title: "返回平良港碼頭登船（18:00 準時啟航）",
+            desc: "最遲請於啟航前 1 小時回到船上。晚間可換上優雅服飾，在施華洛世奇水晶旋梯拍攝紀念美照！",
+            transport: "🚢 郵輪航行",
+            transportColor: "bg-aqua",
+            mustGo: true
+          }
+        ]
+      },
+      {
+        dayLabel: "Day 3 ・ 2026/12/30 (週三)",
+        weatherTag: "🌺 07:00-19:00 停靠沖繩那霸",
+        bannerBg: "bg-coral",
+        tabColor: "bg-yamabuki",
+        title: "沖繩那霸・波上宮海景神社與國際通血拼",
+        summary: "郵輪停靠交通超便利的那霸港！早上參拜懸崖上的波上宮、巡禮首里城守禮門，下午在國際通與百貨盡情採買美食與伴手禮。",
+        events: [
+          {
+            time: "07:00",
+            title: "抵達沖繩那霸港郵輪碼頭",
+            desc: "在 15 樓自助餐廳看著那霸港海景吃早餐，帶齊船卡與護照影本輕鬆下船。",
+            transport: "🚢 郵輪靠岸",
+            transportColor: "bg-aqua",
+            mustGo: false
+          },
+          {
+            time: "08:30",
+            title: "波上宮（懸崖上的琉球八社之首）",
+            desc: "距離那霸碼頭超近！佇立在珊瑚礁懸崖上的朱紅神社，別忘了買一個可愛的沖繩紅型書包御守與戀愛御守。",
+            transport: "🚶 步行 / 計程車",
+            transportColor: "bg-wakatake",
+            mustGo: true
+          },
+          {
+            time: "10:00",
+            title: "首里城公園・守禮門 ＆ 金城町石疊道",
+            desc: "搭乘沖繩都市單軌電車（Yui-Rail）前往首里站，在兩千日圓紙鈔上的「守禮門」前合影，感受琉球王國歷史底蘊。",
+            transport: "🚝 單軌電車",
+            transportColor: "bg-wakatake",
+            mustGo: true
+          },
+          {
+            time: "12:30",
+            title: "第一牧志公設市場海鮮 ＆ 豬肉蛋飯糰",
+            desc: "品嚐現挑現料理的沖繩龍蝦、夜光貝與阿咕豬，再來一顆熱騰騰的苦瓜天婦羅豬肉蛋飯糰！",
+            transport: "🚶 市場漫步",
+            transportColor: "bg-yamabuki",
+            mustGo: true
+          },
+          {
+            time: "14:30",
+            title: "國際通奇蹟一哩商店街 ＆ 新都心 / PARCO CITY",
+            desc: "買齊御菓子御殿紅芋塔、Calbee+ 現炸紫薯薯條、Blue Seal 冰淇淋與各式藥妝電器。",
+            transport: "🚝 單軌 / 巴士",
+            transportColor: "bg-wakatake",
+            mustGo: true
+          },
+          {
+            time: "17:30",
+            title: "返回那霸港登船（19:00 啟航）＆ 船上白色派對",
+            desc: "返回溫暖郵輪享用晚餐，晚間穿上準備好的白色服飾，參加 MSC 最受歡迎的甲板「白色派對 (White Party)」！",
+            transport: "🚢 郵輪航行",
+            transportColor: "bg-aqua",
+            mustGo: true
+          }
+        ]
+      },
+      {
+        dayLabel: "Day 4 ・ 2026/12/31 (週四・跨年夜)",
+        weatherTag: "🎆 09:00-19:00 石垣島＋海上跨年",
+        bannerBg: "bg-wakatake",
+        tabColor: "bg-wakatake",
+        title: "石垣島川平灣絕景・炭火石垣牛＆跨年倒數派對",
+        summary: "2026 最後一天在米其林三星景點「川平灣」搭玻璃船賞珊瑚，大啖頂級石垣牛燒肉！夜晚在榮耀號上迎接 2027 跨年倒數狂歡！",
+        events: [
+          {
+            time: "09:00",
+            title: "抵達石垣島新港碼頭",
+            desc: "上午 9 點抵達八重山群島主島「石垣島」，準備展開自然絕景與和牛美食之旅。",
+            transport: "🚢 郵輪靠岸",
+            transportColor: "bg-aqua",
+            mustGo: false
+          },
+          {
+            time: "10:00",
+            title: "川平灣 (Kabira Bay) 搭乘玻璃底船",
+            desc: "榮獲《米其林綠色指南》三星最高評價！翡翠綠海水清澈見底，搭乘玻璃船近距離欣賞五彩珊瑚礁與小丑魚。",
+            transport: "🚕 包車 / 巴士",
+            transportColor: "bg-yamabuki",
+            mustGo: true
+          },
+          {
+            time: "12:30",
+            title: "極品石垣牛炭火燒肉午餐（金城燒肉／石垣屋）",
+            desc: "來到石垣島絕對不能錯過的夢幻和牛！大理石般油花在炭火上滋滋作響，每一口都是幸福滋味。",
+            transport: "🚕 岸上包車",
+            transportColor: "bg-yamabuki",
+            mustGo: true
+          },
+          {
+            time: "14:45",
+            title: "玉取崎展望台看海 或 民俗村松鼠猴互動",
+            desc: "登高眺望太平洋與東海交會的漸層海灣，或前往石垣島鍾乳洞、八重山民俗村體驗三線琴文化。",
+            transport: "🚕 岸上包車",
+            transportColor: "bg-yamabuki",
+            mustGo: false
+          },
+          {
+            time: "16:15",
+            title: "石垣公設市場 ＆ 730交叉口採買「邊銀食堂辣油」",
+            desc: "把握最後岸上採買時光！必買香氣迷人的石垣島辣油、黑糖花生與海鹽點心。",
+            transport: "🚶 市區漫步",
+            transportColor: "bg-wakatake",
+            mustGo: true
+          },
+          {
+            time: "17:30",
+            title: "返回石垣港登船（19:00 啟航返台）",
+            desc: "告別沖繩群島，晚上享用豐盛跨年大餐；記得在睡前將整理好的托運行李貼條放置房門外（或明早自行攜帶下船）。",
+            transport: "🚢 郵輪返航",
+            transportColor: "bg-aqua",
+            mustGo: false
+          },
+          {
+            time: "22:30",
+            title: "🎉 2026 ➔ 2027 榮耀大道＆泳池甲板跨年倒數派對！",
+            desc: "全船最沸騰的時刻！在 80 公尺 LED 巨型天幕與星空甲板下，與數千名旅客一起倒數「5、4、3、2、1 Happy New Year!」",
+            transport: "🎆 跨年狂歡",
+            transportColor: "bg-coral",
+            mustGo: true
+          }
+        ]
+      },
+      {
+        dayLabel: "Day 5 ・ 2027/01/01 (週五・元旦)",
+        weatherTag: "🌅 07:00 返抵基隆港",
+        bannerBg: "bg-yamabuki",
+        tabColor: "bg-coral",
+        title: "2027 元旦海上第一道曙光・返抵溫暖的家",
+        summary: "在太平洋海面上迎接 2027 年元旦日出！享用完郵輪早餐後緩緩駛入基隆港，帶著滿滿的沖繩三島回憶與戰利品平安返家。",
+        events: [
+          {
+            time: "06:15",
+            title: "15-16樓甲板迎接 2027 元旦第一道海上曙光",
+            desc: "早起披上保暖外套到甲板，看金色朝陽從海平面緩緩升起，許下 2027 新年新希望！",
+            transport: "🌅 海上日出",
+            transportColor: "bg-yamabuki",
+            mustGo: true
+          },
+          {
+            time: "07:00",
+            title: "緩緩駛入基隆港・享用元旦活力早餐",
+            desc: "前往主餐廳或 15 樓市集自助餐廳享用熱騰騰的咖啡、歐姆蛋與可頌早餐，順便檢查房內保險箱與隨身物品。",
+            transport: "🚢 郵輪抵港",
+            transportColor: "bg-aqua",
+            mustGo: false
+          },
+          {
+            time: "08:30",
+            title: "依序辦理離船手續 ＆ 領取行李過海關",
+            desc: "確認船卡帳單結清後，依廣播梯次刷船卡離船（船卡可帶回家做紀念喔！），於航廈提領大件行李。",
+            transport: "🚶 碼頭步行",
+            transportColor: "bg-wakatake",
+            mustGo: false
+          },
+          {
+            time: "10:00",
+            title: "滿載跨年回憶與沖繩伴手禮，平安賦歸",
+            desc: "從基隆港搭乘台鐵、客運或計程車返回溫暖的家，期待下一趟美好的旅行！",
+            transport: "🚕 台鐵 / 計程車",
+            transportColor: "bg-yamabuki",
+            mustGo: false
+          }
+        ]
+      }
+    ];
+
+    // ------------------------------------------
+    // 3. 預設待辦清單資料
+    // ------------------------------------------
+    const defaultChecklist = [
+      { id: "c1", category: "證件財務", text: "護照正本（效期需滿 6 個月以上，2027/07 後到期）", done: false },
+      { id: "c2", category: "證件財務", text: "護照個人資料頁 A4 影本 2 份（岸上觀光必備！）", done: false },
+      { id: "c3", category: "證件財務", text: "紙本郵輪船票 (Cruise Ticket) ＆ 行李條列印釘妥", done: false },
+      { id: "c4", category: "證件財務", text: "綁定船卡用之信用卡（Visa / Master / JCB）＋ 日幣現金", done: false },
+      { id: "c5", category: "郵輪生活", text: "牙刷、牙膏、室內拖鞋、梳子（郵輪環保不主動提供）", done: false },
+      { id: "c6", category: "郵輪生活", text: "白色派對服裝 1 套 ＆ 船長之夜正式晚宴服裝", done: false },
+      { id: "c7", category: "郵輪生活", text: "泳衣、泳帽、防滑拖鞋（亞利桑那水上樂園＆溫水池）", done: false },
+      { id: "c8", category: "郵輪生活", text: "個人常備藥（暈船藥、腸胃藥、感冒藥、OK繃）", done: false },
+      { id: "c9", category: "郵輪生活", text: "無防突波/無延長線功能之轉接頭（嚴禁帶延長線與熨斗）", done: false },
+      { id: "c10", category: "郵輪生活", text: "手機先下載《MSC for Me》App（登船後連船內Wi-Fi預約大秀）", done: false },
+      { id: "c11", category: "岸上觀光", text: "日本 3~4 日 eSIM 或漫遊網卡（宮古島、那霸、石垣島使用）", done: false },
+      { id: "c12", category: "岸上觀光", text: "防風薄外套、太陽眼鏡、晴雨兩用摺疊傘、好走的鞋", done: false }
+    ];
+
+    // 狀態管理
+    let currentDayIndex = 0;
+    let currentChecklistFilter = 'all';
+    let checklistItems = [];
+
+    // ------------------------------------------
+    // 4. 日期切換與時間軸渲染（含彈跳動畫）
+    // ------------------------------------------
+    function selectDay(index) {
+      currentDayIndex = index;
+      const day = itineraryData[index];
+
+      // 更新上方 5 個 Tab 按鈕外觀與無障礙狀態
+      for (let i = 0; i < itineraryData.length; i++) {
+        const tabBtn = document.getElementById(`day-tab-${i}`);
+        if (!tabBtn) continue;
+        if (i === index) {
+          tabBtn.className = `ehon-btn py-2.5 px-1 text-center ${day.tabColor} -translate-y-1 shadow-[4px_4px_0px_#3E3A39]`;
+          tabBtn.setAttribute('aria-selected', 'true');
+        } else {
+          tabBtn.className = `ehon-btn py-2.5 px-1 text-center bg-washi hover:bg-paper`;
+          tabBtn.setAttribute('aria-selected', 'false');
+        }
+      }
+
+      // 觸發卡片彈跳動畫 (若未開啟減少動態)
+      const cardContainer = document.getElementById('itineraryCardContainer');
+      cardContainer.classList.remove('anim-bounce-in');
+      void cardContainer.offsetWidth; // 觸發重繪
+      cardContainer.classList.add('anim-bounce-in');
+
+      // 更新當日標頭與專屬 SVG 插圖
+      const headerBanner = document.getElementById('dayHeaderBanner');
+      headerBanner.className = `ehon-box-sm p-4 mb-6 ${day.bannerBg}`;
+      document.getElementById('dayBadge').textContent = day.dayLabel;
+      document.getElementById('dayWeatherTag').textContent = day.weatherTag;
+      document.getElementById('dayTitle').textContent = day.title;
+      document.getElementById('daySummary').textContent = day.summary;
+      document.getElementById('daySvgContainer').innerHTML = dayIllustrations[index];
+
+      // 渲染時間軸項目
+      const timelineList = document.getElementById('timelineList');
+      timelineList.innerHTML = day.events.map((ev) => {
+        const dotBg = ev.mustGo ? 'bg-coral' : 'bg-yamabuki';
+        const mustBadge = ev.mustGo
+          ? `<span class="ehon-pill bg-coral px-2.5 py-0.5 text-xs font-bold inline-flex items-center gap-1">★ 必去</span>`
+          : '';
+        return `
+          <div class="relative group">
+            <!-- 時間軸左方圓點 -->
+            <span class="absolute -left-[35px] sm:-left-[43px] top-3 w-5 h-5 rounded-full ${dotBg} border-[3px] border-ink shadow-[2px_2px_0px_#3E3A39]"></span>
+
+            <!-- 時間軸內容小卡 -->
+            <div class="ehon-box-sm ${ev.mustGo ? 'bg-washi' : 'bg-paper'} p-3.5 sm:p-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="ehon-pill bg-ink text-washi px-2.5 py-0.5 text-xs sm:text-sm font-bold">${ev.time}</span>
+                  <span class="ehon-pill ${ev.transportColor} px-2.5 py-0.5 text-xs font-bold">${ev.transport}</span>
+                </div>
+                ${mustBadge}
+              </div>
+              <h4 class="text-base sm:text-lg font-bold leading-snug mb-1">${ev.title}</h4>
+              <p class="text-xs sm:text-sm font-bold leading-relaxed">${ev.desc}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 更新底部頁碼與前後日按鈕狀態
+      document.getElementById('dayPageIndicator').textContent = `第 ${index + 1} / ${itineraryData.length} 天`;
+      document.getElementById('prevDayBtn').disabled = (index === 0);
+      document.getElementById('prevDayBtn').style.opacity = (index === 0) ? '0.45' : '1';
+      document.getElementById('nextDayBtn').disabled = (index === itineraryData.length - 1);
+      document.getElementById('nextDayBtn').style.opacity = (index === itineraryData.length - 1) ? '0.45' : '1';
+    }
+
+    function changeDayRelative(delta) {
+      const nextIndex = currentDayIndex + delta;
+      if (nextIndex >= 0 && nextIndex < itineraryData.length) {
+        selectDay(nextIndex);
+        document.getElementById('itinerary').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // ------------------------------------------
+    // 5. 出發倒數計時器 (目標：2026-12-28T18:00:00+08:00)
+    // ------------------------------------------
+    function updateCountdown() {
+      const departureTime = new Date('2026-12-28T18:00:00+08:00').getTime();
+      const endTime = new Date('2027-01-01T10:00:00+08:00').getTime();
+      const now = Date.now();
+      const diff = departureTime - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+      } else if (now <= endTime) {
+        document.getElementById('countdownTitle').textContent = '🚢 正在 MSC 榮耀號跨年航程中！祝旅途愉快！';
+        document.getElementById('cd-days').textContent = 'GO';
+        document.getElementById('cd-hours').textContent = '20';
+        document.getElementById('cd-mins').textContent = '27';
+        document.getElementById('cd-secs').textContent = '🎉';
+      } else {
+        document.getElementById('countdownTitle').textContent = '✨ 2026–2027 跨年郵輪之旅圓滿完成！';
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        document.getElementById('cd-secs').textContent = '00';
+      }
+    }
+
+    // ------------------------------------------
+    // 6. 可打勾待辦清單 (Checklist + LocalStorage)
+    // ------------------------------------------
+    const STORAGE_KEY_TODO = 'msc_2026_ehon_todos_v1';
+
+    function loadChecklist() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_TODO);
+        if (saved) {
+          checklistItems = JSON.parse(saved);
+        } else {
+          checklistItems = JSON.parse(JSON.stringify(defaultChecklist));
+        }
+      } catch (e) {
+        checklistItems = JSON.parse(JSON.stringify(defaultChecklist));
+      }
+      renderChecklist();
+    }
+
+    function saveChecklist() {
+      try {
+        localStorage.setItem(STORAGE_KEY_TODO, JSON.stringify(checklistItems));
+      } catch (e) {
+        // 忽略無痕模式儲存限制
+      }
+    }
+
+    function renderChecklist() {
+      const container = document.getElementById('checklistContainer');
+      const total = checklistItems.length;
+      const doneCount = checklistItems.filter(item => item.done).length;
+      const percent = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+
+      document.getElementById('checklistProgressText').textContent = `已完成 ${doneCount} / ${total} 項 (${percent}%)`;
+      document.getElementById('checklistProgressBar').style.width = `${percent}%`;
+
+      const filtered = currentChecklistFilter === 'all'
+        ? checklistItems
+        : checklistItems.filter(item => item.category === currentChecklistFilter);
+
+      const categoryColors = {
+        '證件財務': 'bg-coral',
+        '郵輪生活': 'bg-aqua',
+        '岸上觀光': 'bg-yamabuki'
+      };
+
+      container.innerHTML = filtered.map((item) => {
+        const badgeColor = categoryColors[item.category] || 'bg-wakatake';
+        return `
+          <label class="ehon-box-sm ${item.done ? 'bg-wakatake/40' : 'bg-washi'} p-3 flex items-start gap-3 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              class="ehon-checkbox mt-0.5"
+              ${item.done ? 'checked' : ''}
+              onchange="toggleChecklistItem('${item.id}')"
+            />
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1 mb-1">
+                <span class="ehon-pill ${badgeColor} px-2 py-0.2 text-[11px] font-bold">${item.category}</span>
+                <button type="button" onclick="deleteChecklistItem(event, '${item.id}')" class="text-xs px-1.5 py-0.5 rounded hover:bg-coral font-bold" title="刪除此項目">✕</button>
+              </div>
+              <span class="text-xs sm:text-sm font-bold block leading-snug ${item.done ? 'line-through opacity-75' : ''}">${escapeHtml(item.text)}</span>
+            </div>
+          </label>
+        `;
+      }).join('');
+    }
+
+    function toggleChecklistItem(id) {
+      const target = checklistItems.find(item => item.id === id);
+      if (target) {
+        target.done = !target.done;
+        saveChecklist();
+        renderChecklist();
+      }
+    }
+
+    function addChecklistItem(event) {
+      event.preventDefault();
+      const input = document.getElementById('newTodoInput');
+      const category = document.getElementById('newTodoCategory').value;
+      const text = input.value.trim();
+      if (!text) return;
+
+      checklistItems.push({
+        id: 'custom_' + Date.now(),
+        category,
+        text,
+        done: false
+      });
+      input.value = '';
+      saveChecklist();
+      renderChecklist();
+    }
+
+    function deleteChecklistItem(event, id) {
+      event.preventDefault();
+      event.stopPropagation();
+      checklistItems = checklistItems.filter(item => item.id !== id);
+      saveChecklist();
+      renderChecklist();
+    }
+
+    function resetChecklist() {
+      checklistItems = JSON.parse(JSON.stringify(defaultChecklist));
+      saveChecklist();
+      renderChecklist();
+    }
+
+    function filterChecklist(category) {
+      currentChecklistFilter = category;
+      const filters = ['all', '證件財務', '郵輪生活', '岸上觀光'];
+      filters.forEach(f => {
+        const btn = document.getElementById(`filter-${f}`);
+        if (!btn) return;
+        btn.className = (f === category)
+          ? 'ehon-pill bg-yamabuki px-3 py-1 text-xs sm:text-sm font-bold shadow-[2px_2px_0px_#3E3A39]'
+          : 'ehon-pill bg-washi hover:bg-paper px-3 py-1 text-xs sm:text-sm font-bold';
+      });
+      renderChecklist();
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function(m) {
+        return ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        })[m];
+      });
+    }
+
+    // ------------------------------------------
+    // 7. 船班備忘與艙房資訊 LocalStorage 自動記憶
+    // ------------------------------------------
+    const STORAGE_KEY_TRANSPORT = 'msc_2026_ehon_transport_v1';
+    const STORAGE_KEY_CABIN = 'msc_2026_ehon_cabin_v1';
+
+    function saveTransportNote() {
+      try {
+        const val = document.getElementById('customTransportNote').value;
+        localStorage.setItem(STORAGE_KEY_TRANSPORT, val);
+        const badge = document.getElementById('transportSaveBadge');
+        badge.classList.remove('hidden');
+        setTimeout(() => badge.classList.add('hidden'), 1800);
+      } catch (e) {}
+    }
+
+    function saveCabinInfo() {
+      try {
+        const data = {
+          cabinType: document.getElementById('cabinType').value,
+          cabinNumber: document.getElementById('cabinNumber').value,
+          dinnerTime: document.getElementById('dinnerTime').value,
+          musterStation: document.getElementById('musterStation').value
+        };
+        localStorage.setItem(STORAGE_KEY_CABIN, JSON.stringify(data));
+        const badge = document.getElementById('cabinSaveBadge');
+        badge.classList.remove('hidden');
+        setTimeout(() => badge.classList.add('hidden'), 1800);
+      } catch (e) {}
+    }
+
+    function loadPersonalNotes() {
+      try {
+        const savedTransport = localStorage.getItem(STORAGE_KEY_TRANSPORT);
+        if (savedTransport !== null) {
+          document.getElementById('customTransportNote').value = savedTransport;
+        }
+        const savedCabin = localStorage.getItem(STORAGE_KEY_CABIN);
+        if (savedCabin) {
+          const parsed = JSON.parse(savedCabin);
+          if (parsed.cabinType !== undefined) document.getElementById('cabinType').value = parsed.cabinType;
+          if (parsed.cabinNumber !== undefined) document.getElementById('cabinNumber').value = parsed.cabinNumber;
+          if (parsed.dinnerTime !== undefined) document.getElementById('dinnerTime').value = parsed.dinnerTime;
+          if (parsed.musterStation !== undefined) document.getElementById('musterStation').value = parsed.musterStation;
+        }
+      } catch (e) {}
+    }
+
+    // ------------------------------------------
+    // 8. 減少動態效果切換 (Reduced Motion Toggle)
+    // ------------------------------------------
+    let isReducedMotion = false;
+
+    function initReducedMotion() {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (mediaQuery.matches) {
+        setReducedMotionState(true);
+      }
+      mediaQuery.addEventListener('change', (e) => {
+        setReducedMotionState(e.matches);
+      });
+    }
+
+    function toggleReducedMotion() {
+      setReducedMotionState(!isReducedMotion);
+    }
+
+    function setReducedMotionState(reduce) {
+      isReducedMotion = reduce;
+      if (reduce) {
+        document.body.classList.add('reduce-motion');
+        document.getElementById('motionIcon').textContent = '🌿';
+        document.getElementById('motionText').textContent = '減少動態';
+      } else {
+        document.body.classList.remove('reduce-motion');
+        document.getElementById('motionIcon').textContent = '✨';
+        document.getElementById('motionText').textContent = '動態開啟';
+      }
+    }
+
+    // ------------------------------------------
+    // 9. 一鍵下載單一 HTML 檔 & GitHub Pages 教學視窗
+    // ------------------------------------------
+    function openGithubModal() {
+      const modal = document.getElementById('githubModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeGithubModal() {
+      const modal = document.getElementById('githubModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copyGitCommands() {
+      const text = document.getElementById('gitCommandsText').innerText;
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+
+      const btn = document.getElementById('copyGitBtn');
+      btn.textContent = '✓ 已複製指令！';
+      setTimeout(() => {
+        btn.textContent = '📋 複製指令';
+      }, 2000);
+    }
+
+    function downloadSingleHtml() {
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // ------------------------------------------
+    // 10. 頁面初始化啟動
+    // ------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      initReducedMotion();
+      selectDay(0);
+      loadChecklist();
+      loadPersonalNotes();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
+  </script>
+</body>
+</html>
